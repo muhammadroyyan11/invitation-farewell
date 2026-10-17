@@ -35,7 +35,18 @@
   border-block: 1px solid var(--line);
 }
 
-.event-summary > div + div {
+.event-summary > div {
+  padding-inline: 10px;
+}
+
+.event-summary .event-date {
+  grid-column: 1 / -1;
+  padding-bottom: 14px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.event-summary > div:last-child {
   border-left: 1px solid var(--line);
 }
 

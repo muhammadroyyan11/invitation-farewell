@@ -14,7 +14,7 @@ npm start
 - Rekap kehadiran: `http://localhost:3000/admin`
 - Pengembangan dengan restart otomatis: `npm run dev`
 
-Undangan menampilkan pukul **19.00**, lokasi **mess**, dan informasi bahwa **shift 2 boleh menyusul**. Tanggal tidak ditampilkan karena belum ditentukan. Teks acara bisa diubah di `public/index.html`.
+Acara berlangsung **Minggu, 18 Oktober 2026 pukul 19.00 WIB**, berlokasi di **Mess Sneakerzone Malang**, dan **shift 2 boleh menyusul**. Teks acara bisa diubah di `public/index.html`, `public/app.js`, dan `public/admin.html`.
 
 ## Cara melihat konfirmasi kehadiran
 

@@ -16,7 +16,7 @@ try {
 function showSuccess(response, focus = true) {
   document.querySelector('#success-name').textContent = response.name;
   const messages = {
-    hadir: 'Konfirmasimu sudah tersimpan. Sampai ketemu di mess! Jangan lupa bawa cerita terbaikmu.',
+    hadir: 'Konfirmasimu sudah tersimpan. Sampai ketemu di Mess Sneakerzone Malang! Jangan lupa bawa cerita terbaikmu.',
     menyusul: 'Konfirmasimu sudah tersimpan. Selesaikan shift 2 dulu, lalu merapat. Kami tunggu, ya!',
     'tidak-hadir': 'Konfirmasimu sudah tersimpan. Terima kasih untuk doa baiknya. Semoga kita bertemu di kesempatan berikutnya.'
   };
