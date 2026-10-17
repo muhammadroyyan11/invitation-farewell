@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f7f6ed">
+  <title>Ruang Panitia — Farewell Asik Royyan</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/admin.js" defer></script>
+</head>
+<body>
+  <header class="site-header container"><a class="brand" href="/"><span class="brand-mark" aria-hidden="true">r<span>✳</span></span><span>one last<br><strong>good time.</strong></span></a><a class="nav-rsvp" href="/">Lihat undangan <span aria-hidden="true">↗</span></a></header>
+  <main class="admin-shell">
+    <section id="login-panel" class="admin-login" aria-labelledby="login-title"><span class="eyebrow">FOR THE PEOPLE BEHIND THE NIGHT</span><h2 id="login-title">Ruang panitia<span class="orange-dot">.</span></h2><p>Masuk untuk melihat siapa yang hadir, membaca pesan, dan mengunduh rekap kehadiran.</p><form id="login-form"><label class="field-label" for="admin-password">Kata sandi panitia</label><input id="admin-password" name="password" type="password" autocomplete="current-password" placeholder="Masukkan kata sandi" required><p id="login-error" class="form-error" role="alert" hidden></p><button class="button button-dark" type="submit"><span>Masuk ke rekap</span><span aria-hidden="true">↗</span></button></form><p class="admin-login-note">Akses ini khusus panitia. Hubungi pengelola website untuk mendapatkan kata sandi.</p></section>
+    <section id="dashboard" aria-labelledby="dashboard-title" hidden>
+      <div class="admin-intro"><div><span class="eyebrow">FAREWELL ASIK ROYYAN</span><h1 id="dashboard-title">Yang akan berbagi cerita<span class="orange-dot">.</span></h1><p>Semua konfirmasi dalam satu tempat. Pukul 19.00 · Di mess.</p></div><div class="admin-actions"><a class="button button-dark" href="/api/admin/export">Unduh CSV <span aria-hidden="true">↓</span></a><button class="button button-outline" id="logout-button" type="button">Keluar</button></div></div>
+      <div class="admin-notice"><strong>Catatan untuk panitia:</strong> Jumlah yang akan datang adalah gabungan “Hadir” dan “Menyusul”. Teman-teman shift 2 bisa datang setelah selesai bekerja.</div>
+      <div class="summary-grid" aria-label="Ringkasan konfirmasi"><div class="summary-card"><strong id="count-total">0</strong><span>Total konfirmasi</span></div><div class="summary-card"><strong id="count-hadir">0</strong><span>Hadir pukul 19.00</span></div><div class="summary-card"><strong id="count-menyusul">0</strong><span>Menyusul / shift 2</span></div><div class="summary-card"><strong id="count-tidak-hadir">0</strong><span>Berhalangan</span></div></div>
+      <div class="admin-toolbar"><div class="admin-filters"><input type="search" id="search-name" aria-label="Cari nama tamu" placeholder="Cari nama teman..."><select id="status-filter" aria-label="Filter kehadiran"><option value="all">Semua konfirmasi</option value="hadir">Hadir</option><option value="menyusul">Menyusul / shift 2</option><option value="tidak-hadir">Berhalangan</option></select></div><button id="refresh-button" class="admin-refresh" type="button">↻ Muat ulang rekap</button></div>
+      <p id="dashboard-error" class="form-error" role="alert" hidden></p>
+      <div class="table-wrap"><table><caption class="table-caption" hidden>Daftar konfirmasi kehadiran Farewell Asik Royyan</caption><thead><tr><th scope="col">Nama</th><th scope="col">Konfirmasi</th><th scope="col">Pesan</th><th scope="col">Diperbarui</th></tr></thead><tbody id="response-rows"></tbody></table><div class="table-empty" id="empty-state" role="status">Belum ada konfirmasi. Bagikan undangannya, yuk!</div></div>
+      <p id="last-updated" class="admin-update" role="status"></p>
+    </section>
+    <noscript><p>Aktifkan JavaScript untuk masuk dan melihat rekap kehadiran.</p></noscript>
+  </main>
+</body>
+</html>

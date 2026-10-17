@@ -1,0 +1,136 @@
+.form-page {
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+.form-shell {
+  width: min(460px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 40px 0 24px;
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.form-header .eyebrow {
+  justify-content: center;
+}
+
+.form-header h1 {
+  margin: 13px 0 20px;
+  font-family: var(--display);
+  font-size: clamp(26px, 7vw, 32px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -1px;
+}
+
+.event-summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 15px 0;
+  margin: 0;
+  border-block: 1px solid var(--line);
+}
+
+.event-summary > div + div {
+  border-left: 1px solid var(--line);
+}
+
+.event-summary dt {
+  margin-bottom: 4px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.event-summary dd {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.shift-note {
+  margin: 13px 0 0;
+  font-size: 11px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.form-page .rsvp-form-card {
+  padding: 26px;
+}
+
+.compact-form-title {
+  margin: 0;
+  font-size: 20px;
+  letter-spacing: -.6px;
+}
+
+.compact-form-description {
+  margin: 9px 0 23px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.form-page .field-label {
+  font-size: 12px;
+}
+
+.form-page input[type="text"] {
+  font-size: 16px;
+}
+
+.form-page .status-option {
+  padding: 13px;
+}
+
+.form-page .status-option strong {
+  font-size: 12px;
+}
+
+.form-page .status-option small {
+  font-size: 10px;
+}
+
+.form-page fieldset {
+  margin-bottom: 0;
+}
+
+.form-page .submit-button {
+  font-size: 12px;
+}
+
+.form-page .form-footnote {
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+.form-page .success-panel {
+  padding-block: 25px 10px;
+}
+
+.form-footer {
+  padding-top: 19px;
+  text-align: center;
+  font-size: 10px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.form-footer a:hover {
+  color: var(--ink);
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .form-shell {
+    padding-top: 25px;
+  }
+
+  .form-page .rsvp-form-card {
+    padding: 23px 20px;
+  }
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f6ed">
+  <meta name="description" content="Konfirmasi kehadiran Farewell Asik Royyan. Pukul 19.00 di mess. Shift 2 boleh menyusul.">
+  <title>Konfirmasi Kehadiran — Farewell Asik Royyan</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/form.css">
+  <script src="/app.js" defer></script>
+</head>
+<body class="form-page">
+  <main class="form-shell">
+    <header class="form-header">
+      <span class="eyebrow"><span class="status-dot" aria-hidden="true"></span> KONFIRMASI KEHADIRAN</span>
+      <h1>Farewell Asik Royyan<span class="orange-dot">.</span></h1>
+      <dl class="event-summary">
+        <div><dt>Waktu</dt><dd>Pukul 19.00</dd></div>
+        <div><dt>Lokasi</dt><dd>Mess</dd></div>
+      </dl>
+      <p class="shift-note">Teman-teman shift 2 boleh menyusul setelah selesai bekerja.</p>
+    </header>
+
+    <section class="rsvp-form-card" aria-labelledby="form-title">
+      <h2 id="form-title" class="compact-form-title">Konfirmasi kehadiran</h2>
+      <p class="compact-form-description">Isi nama dan pilih konfirmasimu di bawah ini.</p>
+      <noscript><p>Aktifkan JavaScript di browser untuk mengirim konfirmasi kehadiran.</p></noscript>
+      <form id="rsvp-form">
+        <label class="field-label" for="guest-name">Nama lengkap <span>*</span></label>
+        <input id="guest-name" name="name" type="text" placeholder="Tulis nama lengkapmu" autocomplete="name" minlength="2" maxlength="80" required>
+
+        <fieldset>
+          <legend class="field-label">Konfirmasi <span>*</span></legend>
+          <label class="status-option">
+            <input type="radio" name="status" value="hadir" required>
+            <span class="radio-indicator"></span>
+            <span><strong>Hadir</strong><small>Datang pukul 19.00</small></span>
+          </label>
+          <label class="status-option">
+            <input type="radio" name="status" value="menyusul">
+            <span class="radio-indicator"></span>
+            <span><strong>Hadir, menyusul</strong><small>Datang setelah selesai shift 2</small></span>
+          </label>
+          <label class="status-option">
+            <input type="radio" name="status" value="tidak-hadir">
+            <span class="radio-indicator"></span>
+            <span><strong>Tidak bisa hadir</strong><small>Berhalangan untuk ikut</small></span>
+          </label>
+        </fieldset>
+
+        <p id="form-error" class="form-error" role="alert" hidden></p>
+        <button class="button button-dark submit-button" type="submit"><span id="submit-label">Kirim konfirmasi</span><span aria-hidden="true">↗</span></button>
+        <p class="form-footnote">Konfirmasi hanya dilihat panitia dan bisa diperbarui.</p>
+      </form>
+
+      <div id="rsvp-success" class="success-panel" tabindex="-1" hidden>
+        <span class="success-mark" aria-hidden="true">✓</span>
+        <h3>Makasih,<br><span id="success-name"></span>!</h3>
+        <p id="success-message"></p>
+        <div class="success-event"><span>19.00 · Di mess</span></div>
+        <button id="edit-response" class="button button-outline" type="button">Perbarui konfirmasi <span aria-hidden="true">↗</span></button>
+      </div>
+    </section>
+
+    <footer class="form-footer"><a href="/admin">Lihat rekap kehadiran · Khusus panitia <span aria-hidden="true">↗</span></a></footer>
+  </main>
+</body>
+</html>
