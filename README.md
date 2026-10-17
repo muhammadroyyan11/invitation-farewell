@@ -1,6 +1,6 @@
 # Farewell Asik Royyan
 
-Halaman utama langsung menampilkan form konfirmasi kehadiran dengan input nama dan pilihan hadir, menyusul setelah shift 2, atau tidak bisa hadir. Informasi farewell ditampilkan singkat di atas form, tanpa halaman undangan panjang. Rekap khusus panitia tetap tersedia. Dibuat dengan Node.js dan HTML/CSS/JavaScript tanpa dependensi tambahan.
+Halaman utama langsung menampilkan form konfirmasi kehadiran dengan input nama dan pilihan hadir, menyusul setelah shift 2, atau tidak bisa hadir. Tersedia kolom pesan dan kesan untuk Royyan yang bersifat opsional, maksimal 500 karakter; pesan bisa diperbarui dan dilihat di rekap panitia. Informasi farewell ditampilkan singkat di atas form, tanpa halaman undangan panjang. Rekap khusus panitia tetap tersedia. Dibuat dengan Node.js dan HTML/CSS/JavaScript tanpa dependensi tambahan.
 
 ## Jalankan
 

@@ -79,8 +79,20 @@
   font-size: 12px;
 }
 
-.form-page input[type="text"] {
+.form-page input[type="text"],
+.form-page textarea {
   font-size: 16px;
+}
+
+.form-page .message-label {
+  margin-top: 23px;
+}
+
+.message-help {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.6;
 }
 
 .form-page .status-option {

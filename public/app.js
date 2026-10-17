@@ -35,6 +35,7 @@ document.querySelector('#edit-response').addEventListener('click', () => {
   if (savedResponse) {
     form.elements.name.value = savedResponse.name;
     form.elements.status.value = savedResponse.status;
+    form.elements.message.value = savedResponse.message || '';
   }
   submitLabel.textContent = 'Perbarui konfirmasi';
   form.elements.name.focus({ preventScroll: true });
@@ -49,7 +50,7 @@ form.addEventListener('submit', async event => {
   const payload = {
     name: form.elements.name.value.trim(),
     status: form.elements.status.value,
-    message: savedResponse?.message || '',
+    message: form.elements.message.value.trim(),
     id: savedResponse?.id,
     editToken: savedResponse?.editToken
   };
