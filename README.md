@@ -28,6 +28,7 @@ Undangan menampilkan pukul **19.00**, lokasi **mess**, dan informasi bahwa **shi
 3. Masukkan kata sandi tersebut. Jangan membagikannya kepada tamu.
 4. Rekap menampilkan nama, status hadir/menyusul/berhalangan, pesan, dan waktu konfirmasi. Gunakan pencarian nama atau filter status. Rekap otomatis diperbarui setiap 30 detik ketika tab aktif; tombol **Muat ulang rekap** tersedia untuk memperbarui langsung.
 5. Klik **Unduh CSV** untuk membuka rekap di Excel atau Google Sheets. Ekspor mencakup semua konfirmasi, bukan hanya hasil filter. Waktu pada CSV menggunakan UTC, sedangkan tabel menggunakan zona waktu perangkat panitia.
+6. Klik **Clear participant**, lalu setujui konfirmasi untuk menghapus **semua peserta, konfirmasi, dan pesan**, termasuk yang tidak terlihat karena filter. Hanya panitia yang sudah login dapat melakukannya. Penghapusan tidak dapat dibatalkan; unduh CSV terlebih dahulu jika diperlukan. Tabel dan ringkasan jumlah peserta langsung dikosongkan setelah berhasil.
 
 Tamu tidak perlu login. Setelah mengirim konfirmasi, tamu bisa memperbaruinya dari browser yang sama, tanpa membuat entri baru. Identitas konfirmasi disimpan di localStorage browser; browser lain atau penyimpanan yang dihapus dapat menghasilkan entri baru. Nama yang sama tidak otomatis digabung agar dua orang bernama sama tetap dapat mengisi.
 

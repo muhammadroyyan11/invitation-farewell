@@ -5,19 +5,25 @@ const loginError = document.querySelector('#login-error');
 const dashboardError = document.querySelector('#dashboard-error');
 const search = document.querySelector('#search-name');
 const filter = document.querySelector('#status-filter');
+const clearButton = document.querySelector('#clear-participants-button');
+const dashboardFeedback = document.querySelector('#dashboard-feedback');
 const labels = { hadir: 'Hadir', menyusul: 'Menyusul / shift 2', 'tidak-hadir': 'Berhalangan' };
 const dateFormat = new Intl.DateTimeFormat('id-ID', { dateStyle: 'medium', timeStyle: 'short' });
 let responses = [];
 let loading = false;
+let clearing = false;
 
 function showLogin() {
   loginPanel.hidden = false;
   dashboard.hidden = true;
   responses = [];
+  clearButton.disabled = true;
+  dashboardFeedback.hidden = true;
   document.querySelector('#response-rows').replaceChildren();
 }
 
 function renderResponses() {
+  clearButton.disabled = responses.length === 0 || loading || clearing;
   document.querySelector('#count-total').textContent = responses.length;
   for (const status of Object.keys(labels)) document.querySelector(`#count-${status}`).textContent = responses.filter(entry => entry.status === status).length;
   const query = search.value.trim().toLocaleLowerCase('id-ID');
@@ -46,11 +52,12 @@ function renderResponses() {
 }
 
 async function loadResponses() {
-  if (loading) return;
+  if (loading || clearing) return;
   loading = true;
   dashboardError.hidden = true;
   const refresh = document.querySelector('#refresh-button');
   refresh.disabled = true;
+  clearButton.disabled = true;
   try {
     const response = await fetch('/api/admin/responses', { cache: 'no-store' });
     if (response.status === 401) {
@@ -75,6 +82,7 @@ async function loadResponses() {
   } finally {
     loading = false;
     refresh.disabled = false;
+    clearButton.disabled = responses.length === 0 || clearing;
   }
 }
 
@@ -107,6 +115,46 @@ document.querySelector('#logout-button').addEventListener('click', async () => {
   } catch {
     dashboardError.textContent = 'Belum berhasil keluar. Periksa koneksi lalu coba lagi.';
     dashboardError.hidden = false;
+  }
+});
+
+clearButton.addEventListener('click', async () => {
+  if (loading || clearing || responses.length === 0) return;
+  if (!window.confirm('Hapus SEMUA peserta, termasuk konfirmasi dan pesan mereka?\n\nTindakan ini tidak dapat dibatalkan, termasuk peserta yang tidak terlihat karena filter. Unduh CSV terlebih dahulu jika diperlukan.')) return;
+  clearing = true;
+  clearButton.disabled = true;
+  clearButton.textContent = 'Menghapus...';
+  const refresh = document.querySelector('#refresh-button');
+  refresh.disabled = true;
+  dashboardError.hidden = true;
+  dashboardFeedback.hidden = true;
+  try {
+    const response = await fetch('/api/admin/responses', {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ confirmation: 'CLEAR_ALL_PARTICIPANTS' })
+    });
+    if (response.status === 401) {
+      showLogin();
+      return;
+    }
+    const result = await response.json();
+    if (!response.ok) throw new Error(result.error || 'Peserta belum berhasil dihapus. Silakan coba lagi.');
+    responses = [];
+    search.value = '';
+    filter.value = 'all';
+    renderResponses();
+    dashboardFeedback.textContent = `${result.deletedCount} peserta beserta konfirmasi dan pesannya berhasil dihapus.`;
+    dashboardFeedback.hidden = false;
+    document.querySelector('#last-updated').textContent = `Rekap dikosongkan ${dateFormat.format(new Date())}.`;
+  } catch (error) {
+    dashboardError.textContent = error instanceof TypeError ? 'Server belum dapat dihubungi. Periksa koneksi lalu coba lagi.' : error.message;
+    dashboardError.hidden = false;
+  } finally {
+    clearing = false;
+    clearButton.textContent = 'Clear participant';
+    clearButton.disabled = responses.length === 0;
+    refresh.disabled = false;
   }
 });
 

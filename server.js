@@ -94,7 +94,7 @@ const server = http.createServer(async (request, response) => {
   response.setHeader('Content-Security-Policy', "default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; base-uri 'none'; form-action 'self'; frame-ancestors 'none'");
   try {
     const url = new URL(request.url, 'http://localhost');
-    if (request.method === 'POST' && request.headers.origin) {
+    if (['POST', 'DELETE'].includes(request.method) && request.headers.origin) {
       const origin = new URL(request.headers.origin);
       if (origin.host !== request.headers.host) return sendJson(response, 403, { error: 'Permintaan lintas situs tidak diizinkan.' });
     }
@@ -134,6 +134,13 @@ const server = http.createServer(async (request, response) => {
       if (url.pathname === '/api/admin/responses' && request.method === 'GET') {
         const responses = readResponses().map(({ editToken, ...entry }) => entry);
         return sendJson(response, 200, { responses });
+      }
+      if (url.pathname === '/api/admin/responses' && request.method === 'DELETE') {
+        const body = await readBody(request);
+        if (body.confirmation !== 'CLEAR_ALL_PARTICIPANTS') return sendJson(response, 400, { error: 'Konfirmasi penghapusan semua peserta diperlukan.' });
+        const deletedCount = readResponses().length;
+        saveResponses([]);
+        return sendJson(response, 200, { ok: true, deletedCount });
       }
       if (url.pathname === '/api/admin/export' && request.method === 'GET') {
         const labels = { hadir: 'Hadir', menyusul: 'Menyusul (shift 2)', 'tidak-hadir': 'Berhalangan' };

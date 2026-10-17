@@ -1,0 +1,18 @@
+.admin-actions {
+  flex-wrap: wrap;
+}
+
+.button-danger {
+  color: #a33e2e;
+  border-color: #d9a194;
+  background: #fff5ef;
+}
+
+.button-danger:hover:not(:disabled) {
+  background: #f8e3d9;
+  border-color: #a33e2e;
+}
+
+.button-danger:disabled {
+  cursor: not-allowed;
+}
